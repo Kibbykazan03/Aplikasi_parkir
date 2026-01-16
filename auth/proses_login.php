@@ -18,27 +18,39 @@ if ($user) {
     if ($password == $user['password']) {
 
         // set session
+        // untuk menyimpan data user yang sudah login ke session
         $_SESSION['id_user'] = $user['id_user'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
 
         // arahkan sesuai role
+        // mengarahkan user ke dasbor sesuai perannya
         if ($user['role'] == 'admin') {
             header("Location: ../admin/dashboard.php");
         } elseif ($user['role'] == 'petugas') {
             header("Location: ../petugas/dashboard.php");
         } elseif ($user['role'] == 'owner') {
             header("Location: ../owner/dashboard.php");
-        } else {
+        } else
+        
+        // Antisipasi kalau role di database tidak sesuai
+        {
             echo "Role tidak dikenali";
         }
 
-    } else {
+    } 
+        // Ditampilkan jika password tidak cocok  
+    else {
         echo "Password salah";
     }
-} else {
-    echo "Username tidak ditemukan atau akun nonaktif";
-}
+
+} 
+        // Username Tidak Ditemukan / Akun Nonaktif
+        else {
+
+             echo "Username tidak ditemukan atau akun nonaktif";
+
+     }
 
 
 
