@@ -18,9 +18,13 @@ if ($_SESSION['role'] != 'petugas') {
 <h2>Dashboard Petugas</h2>
 
 <ul>
-    <li>
-        <a href="transaksi_masuk.php"> Transaksi Parkir Masuk </a>
-    </li>
+    
+        <!-- ini masuk halaman transaksi masuk parkiran -->
+        <li><a href="transaksi_masuk.php"> Transaksi Parkir Masuk </a></li>
+   
+
+        <!-- ini masuk ke halaman transaksi keluar parkiran -->
+        <li><a href="transaksi_keluar.php"> Transaksi Parkir Keluar </a></li>
 </ul>
     
 </body>
