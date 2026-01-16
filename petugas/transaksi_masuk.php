@@ -14,7 +14,7 @@
     include "../config/koneksi.php";
 
 
-    if ($_SESSION['role'] != 'petugas') {
+    if (!isset($_SESSION['role']) || $_SESSION['role'] != 'petugas') {
         header("Location: ../auth/login.php");
         exit;
     }
@@ -25,7 +25,7 @@
         plat nomor <br>
         <input type="text" name="plat" required><br>
 
-        jenis kemdaraan <br>
+        jenis kendaraan <br>
         <select name="jenis">
             <option value="motor">Motor</option>
             <option value="mobil">Mobil</option>
@@ -55,18 +55,18 @@
         $area  = $_POST['area'];
 
         $cek = mysqli_query($koneksi, "
-    SELECT tb_transaksi.id_transaksi 
+    SELECT *
     FROM tb_kendaraan 
     JOIN tb_transaksi ON tb_kendaraan.id_kendaraan = tb_transaksi.id_kendaraan
     WHERE tb_kendaraan.plat_nomor = '$plat'
     AND tb_transaksi.status = 'masuk'
 ");
 
+
         if (mysqli_num_rows($cek) > 0) {
             echo "<p style='color:red;'>❌ Kendaraan dengan plat ini masih parkir!</p>";
             exit;
         }
-
 
         // simpan kendaraan
         mysqli_query($koneksi, "INSERT INTO tb_kendaraan (plat_nomor, jenis_kendaraan)
