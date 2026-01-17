@@ -1,28 +1,26 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Parkir</title>
+    <title>Login</title>
 </head>
-
 <body>
-    <h2>Login</h2>
 
-    <!-- untuk menghubungkan tapilan login dengan logika login  -->
-    <form action="proses_login.php" method="POST">
+<h2>Login</h2>
 
-        <label>Username</label><br>
-        <input type="text" name="username"><br>
+<form action="proses_login.php" method="POST">
+    <label>Username</label><br>
+    <input type="text" name="username" required><br>
 
-        <label>Password</label><br>
-        <input type="password" name="password"><br>
+    <label>Password</label><br>
+    <input type="password" name="password" required><br><br>
 
-<!-- tag button digunakan untuk melanjutkan tindakan ke halaman dashboard -->
-        <button type="submit">Login</button>
+    <button type="submit">Login</button>
+</form>
 
-    </form>
 </body>
-
 </html>

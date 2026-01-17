@@ -17,6 +17,10 @@
 
         <!-- ini masuk ke halaman transaksi keluar parkiran -->
         <li><a href="transaksi_keluar.php"> Transaksi Parkir Keluar </a></li>
+
+        <!-- ini buat kembali ke dashboard -->
+        <li><a href="dashboard.php"> Dashboard</a></li>
+
     </ul>
 
     <?php

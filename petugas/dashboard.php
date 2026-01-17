@@ -28,9 +28,12 @@ if ($_SESSION['role'] != 'petugas') {
 
          <!-- ini masuk ke halaman Riwayat Transaksi parkiran -->
         <li><a href="riwayat_parkir.php"> Riwayat Parkir </a></li>
-</ul>
+
+        <li><a href="../auth/logout.php"> Logout </a></li>
 
     </ul>
+
+
     
 </body>
 </html>
