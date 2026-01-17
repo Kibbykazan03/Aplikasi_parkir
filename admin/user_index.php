@@ -19,7 +19,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 
     <h2>Data User</h2>
 
-    <a href="user_tambah.php">➕ Tambah User</a>
+    <a href="user_tambah.php">➕ Tambah User</a><br>
+    <a href="dashboard.php"> Dashboard</a>
+
     <br><br>
 
     <table border="1" cellpadding="8">
