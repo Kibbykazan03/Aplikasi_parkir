@@ -22,6 +22,12 @@ if ($user) {
         $_SESSION['username'] = $user['username'];
         $_SESSION['role']     = $user['role'];
 
+        mysqli_query($koneksi, "
+            INSERT INTO tb_log_aktivitas (id_user, aktivitas)
+            VALUES ('{$user['id_user']}', 'Login ke sistem')
+");
+
+
         if ($user['role'] == 'admin') {
             header("Location: ../admin/dashboard.php");
             exit;

@@ -76,6 +76,12 @@
         WHERE id_area = '" . $d['id_area'] . "'
     ");
 
+        mysqli_query($koneksi, "
+    INSERT INTO tb_log_aktivitas (id_user, aktivitas)
+    VALUES ('{$_SESSION['id_user']}', 'Transaksi KELUAR - Plat $plat')
+");
+
+
         echo "
         <p style='color:green;'>✅ Kendaraan keluar</p>
         <p>Lama parkir : $durasi_jam jam</p>

@@ -74,17 +74,11 @@
     AND tb_transaksi.status = 'masuk'
 ");
 
-        $cek_area = mysqli_query($koneksi, "
-    SELECT * FROM tb_area_parkir
-    WHERE id_area='$area' AND kapasitas > 0 AND status='aktif'
-");
-
-        if (mysqli_num_rows($cek_area) == 0) {
-            echo "<p style='color:red;'>❌ Area parkir sudah penuh</p>";
-            exit;
+        if (mysqli_num_rows($area) == 0) {
+            echo "<option value=''>Area parkir penuh</option>";
         }
 
-        
+
         if (mysqli_num_rows($cek) > 0) {
             echo "<p style='color:red;'>❌ Kendaraan dengan plat ini masih parkir!</p>";
             exit;
@@ -113,6 +107,12 @@
         SET kapasitas = kapasitas - 1
         WHERE id_area = '$area'
     ");
+
+        mysqli_query($koneksi, "
+    INSERT INTO tb_log_aktivitas (id_user, aktivitas)
+    VALUES ('{$_SESSION['id_user']}', 'Transaksi MASUK - Plat $plat')
+");
+
 
         echo "
         <script>
