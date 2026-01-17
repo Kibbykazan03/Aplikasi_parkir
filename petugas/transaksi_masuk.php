@@ -36,10 +36,21 @@
 
             <?php
 
-            $area = mysqli_query($koneksi, "SELECT *FROM tb_area_parkir");
-            while ($a = mysqli_fetch_assoc($area)) {
-                echo "<option value='" . $a['id_area'] . "'>" . $a['nama_area'] . "</option>";
+            $area = mysqli_query($koneksi, "
+    SELECT * FROM tb_area_parkir
+    WHERE status = 'aktif' AND kapasitas > 0
+");
+
+            if (mysqli_num_rows($area) == 0) {
+                echo "<option value=''>🚫 Area parkir penuh</option>";
+            } else {
+                while ($a = mysqli_fetch_assoc($area)) {
+                    echo "<option value='{$a['id_area']}'>
+            {$a['nama_area']} (Sisa: {$a['kapasitas']})
+        </option>";
+                }
             }
+
             ?>
         </select><br>
 
@@ -57,12 +68,23 @@
         $cek = mysqli_query($koneksi, "
     SELECT *
     FROM tb_kendaraan 
-    JOIN tb_transaksi ON tb_kendaraan.id_kendaraan = tb_transaksi.id_kendaraan
+    JOIN tb_transaksi 
+    ON tb_kendaraan.id_kendaraan = tb_transaksi.id_kendaraan
     WHERE tb_kendaraan.plat_nomor = '$plat'
     AND tb_transaksi.status = 'masuk'
 ");
 
+        $cek_area = mysqli_query($koneksi, "
+    SELECT * FROM tb_area_parkir
+    WHERE id_area='$area' AND kapasitas > 0 AND status='aktif'
+");
 
+        if (mysqli_num_rows($cek_area) == 0) {
+            echo "<p style='color:red;'>❌ Area parkir sudah penuh</p>";
+            exit;
+        }
+
+        
         if (mysqli_num_rows($cek) > 0) {
             echo "<p style='color:red;'>❌ Kendaraan dengan plat ini masih parkir!</p>";
             exit;
@@ -83,6 +105,13 @@
         (id_kendaraan, waktu_masuk, id_tarif, status, id_user, id_area)
         VALUES
         ('$id_kendaraan', NOW(), '" . $t['id_tarif'] . "', 'masuk', '" . $_SESSION['id_user'] . "', '$area')
+    ");
+
+        // kurangi kapasitas area
+        mysqli_query($koneksi, "
+        UPDATE tb_area_parkir 
+        SET kapasitas = kapasitas - 1
+        WHERE id_area = '$area'
     ");
 
         echo "
