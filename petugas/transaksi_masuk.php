@@ -85,7 +85,12 @@
         ('$id_kendaraan', NOW(), '" . $t['id_tarif'] . "', 'masuk', '" . $_SESSION['id_user'] . "', '$area')
     ");
 
-        echo "<p>Transaksi masuk berhasil</p>";
+        echo "
+        <script>
+            alert('✅ Transaksi parkir MASUK berhasil');
+             window.location.href = 'riwayat_parkir.php';
+        </script>
+                ";
     }
 
 
