@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -26,7 +26,7 @@
     <a href="dashboard.php"> ⚙️ Dashboard</a>
 
     <br>
-    
+
     <br>
 
     <table border="1" cellpadding="8">
@@ -67,4 +67,4 @@
 
 </body>
 
-</html>
+</html> 

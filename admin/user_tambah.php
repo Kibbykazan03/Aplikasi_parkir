@@ -48,6 +48,7 @@
         <select name="role">
             <option value="petugas">Petugas</option>
             <option value="owner">Admin</option>
+            <option value="owner">owner</option>
         </select><br><br>
 
         <button type="submit" name="simpan">Simpan</button>
