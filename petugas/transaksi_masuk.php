@@ -74,9 +74,9 @@
     AND tb_transaksi.status = 'masuk'
 ");
 
-        if (mysqli_num_rows($area) == 0) {
-            echo "<option value=''>Area parkir penuh</option>";
-        }
+        // if (mysqli_num_rows($area) == 0) {
+        //     echo "<option value=''>Area parkir penuh</option>";
+        // }
 
 
         if (mysqli_num_rows($cek) > 0) {

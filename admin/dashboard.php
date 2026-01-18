@@ -17,6 +17,8 @@
         <li><a href="user.php">📇 Lihat User</a></li>
         <li><a href="tarif/index.php">💰 Kelola Tarif Parkir</a></li>
         <li><a href="../petugas/riwayat_parkir.php">📑 Riwayat Parkir</a></li>
+        <li><a href="log_aktivitas.php">📜 Log Aktivitas</a></li>
+
         <li><a href="area/index.php">🚦 Kelola Area Parkir</a></li>
 
     </ul>
