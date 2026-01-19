@@ -59,9 +59,12 @@
             <th>Keluar</th>
             <th>Status</th>
             <th>Total</th>
+            <th>Cetak Struk</th>
         </tr>
 
-        <?php while ($d = mysqli_fetch_assoc($q)) { ?>
+        <?php 
+$d = mysqli_fetch_assoc($q); // tapi dipakai di luar konteks
+?>
             <tr>
                 <td><?= $d['plat_nomor'] ?></td>
                 <td><?= $d['jenis_kendaraan'] ?></td>
@@ -79,7 +82,8 @@
                         : '-' ?>
                 </td>
             </tr>
-        <?php } ?>
+
+        <?php ?>
     </table>
 
 </body>
