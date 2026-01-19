@@ -60,11 +60,7 @@
             <th>Status</th>
             <th>Total</th>
             <th>Cetak Struk</th>
-        </tr>
-
-        <?php 
-$d = mysqli_fetch_assoc($q); // tapi dipakai di luar konteks
-?>
+        </tr><?php while ($d = mysqli_fetch_assoc($q)) { ?>
             <tr>
                 <td><?= $d['plat_nomor'] ?></td>
                 <td><?= $d['jenis_kendaraan'] ?></td>
@@ -82,8 +78,8 @@ $d = mysqli_fetch_assoc($q); // tapi dipakai di luar konteks
                         : '-' ?>
                 </td>
             </tr>
+        <?php } ?>
 
-        <?php ?>
     </table>
 
 </body>
